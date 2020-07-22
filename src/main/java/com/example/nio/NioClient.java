@@ -43,7 +43,6 @@ public class NioClient {
                     //刷新连接
                     socketChannel.finishConnect();
                     //连接准备完成后 绑定为写事件
-                    //selectionKey.interestOps(SelectionKey.OP_WRITE);
                     socketChannel.register(selector,SelectionKey.OP_WRITE);
                 }else if(selectionKey.isWritable()){
                     //如果为写事件
