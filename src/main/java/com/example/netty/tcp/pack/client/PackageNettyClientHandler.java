@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class PackageNettyClientHandler extends ChannelInboundHandlerAdapter {
     //2017
-    public static final String STRING = "1111111111111111111111111111111111111111111111111111111111111111|";
+    public static final String STRING = "皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星皇甫科星|";
 
 
     // 请求头  有长度域的写入方式  请求头 body
@@ -26,10 +26,10 @@ public class PackageNettyClientHandler extends ChannelInboundHandlerAdapter {
             ByteBuf buffer = ByteBufAllocator.DEFAULT.ioBuffer();
 
             byte[] bytes = STRING.getBytes(StandardCharsets.UTF_8);
-            buffer.writeByte(1);
-            buffer.writeInt(bytes.length);
-            buffer.writeByte(1);
-            buffer.writeBytes(bytes);
+            //buffer.writeByte(1);
+            //buffer.writeInt(bytes.length);
+            //buffer.writeByte(1);
+            //buffer.writeBytes(bytes);
             channel.writeAndFlush(buffer);
             i++;
         }

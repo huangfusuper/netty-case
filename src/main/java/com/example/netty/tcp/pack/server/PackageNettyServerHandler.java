@@ -13,9 +13,9 @@ public class PackageNettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf byteBuf = (ByteBuf) msg;
-        //byteBuf.readByte();
-        //byteBuf.readInt();
-        //byteBuf.readByte();
+//        byteBuf.readByte();
+//        byteBuf.readInt();
+        byteBuf.readByte();
         System.out.println(byteBuf.toString(StandardCharsets.UTF_8));
     }
 }

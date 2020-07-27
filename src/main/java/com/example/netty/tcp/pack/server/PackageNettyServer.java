@@ -7,6 +7,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 import java.nio.charset.StandardCharsets;
@@ -33,12 +34,12 @@ public class PackageNettyServer {
                         //nioSocketChannel.pipeline().addLast(new LineBasedFrameDecoder(Integer.MAX_VALUE));
 
                         //DelimiterBasedFrameDecoder 分隔符解码IQ
-                        //ByteBuf buffer = nioSocketChannel.alloc().buffer();
-                        //byteBufDecoder("|",buffer);
-                        //nioSocketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,buffer));
+//                        ByteBuf buffer = nioSocketChannel.alloc().buffer();
+//                        byteBufDecoder("|",buffer);
+//                        nioSocketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,buffer));
 
                         //基于长度域拆包器 LengthFieldBasedFrameDecoder
-                        //nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,0,4));
+                        nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,0,4));
 
                         //基于长度域拆包器 请求头 LengthFieldBasedFrameDecoder
                         //nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,1,4));
@@ -48,9 +49,9 @@ public class PackageNettyServer {
 
 
                         //请求头   长度域拆包器 请求头 LengthFieldBasedFrameDecoder  截取body
-                        nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,1,4,1,6));
+                        //nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,1,4,1,6));
 
-                        nioSocketChannel.pipeline().addLast(new PackageNettyServerHandler());
+                        //nioSocketChannel.pipeline().addLast(new PackageNettyServerHandler());
                     }
                 })
                 .bind(8080);
